@@ -46,6 +46,10 @@ public class Main {
 		gridLinesOption.addActionListener(worldController);
 		mainMenu.add(gridLinesOption);
 		
+		JMenuItem diagonalOption = new JMenuItem("Allow Diagonal");
+		diagonalOption.addActionListener(worldController);
+		mainMenu.add(diagonalOption);
+		
 		
 		menuBar.add(mainMenu);
 		frame.setJMenuBar(menuBar);

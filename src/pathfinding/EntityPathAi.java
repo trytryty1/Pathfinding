@@ -3,7 +3,7 @@ package pathfinding;
 import java.awt.Point;
 
 public class EntityPathAi {
-	private EntityPath path;
+	private Point[] path;
 	Point entityLoc;
 	int pathindex = 0;
 	
@@ -13,16 +13,24 @@ public class EntityPathAi {
 	
 	public void update() {
 		if(path != null && entityLoc != null) {
-			if(pathindex < path.pathPoints.length) {
-				entityLoc.x = path.pathPoints[pathindex].x;
-				entityLoc.y = path.pathPoints[pathindex].y;
+			if(pathindex < path.length) {
+				entityLoc.x = path[pathindex].x;
+				entityLoc.y = path[pathindex].y;
 				pathindex++;
 			}
 		}
 	}
 	
-	public void setPath(EntityPath entityPath) {
+	public void setPath(Point[] entityPath) {
 		pathindex = 0;
 		this.path = entityPath;
+	}
+
+	public Point getEntityLoc() {
+		return entityLoc;
+	}
+
+	public void setEntityLoc(Point entityLoc) {
+		this.entityLoc = entityLoc;
 	}
 }
