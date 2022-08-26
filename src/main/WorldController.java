@@ -54,6 +54,8 @@ public class WorldController extends JPanel implements MouseListener, MouseMotio
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
 	}
+	
+	Color gridColor = new Color(150,150,150);
 
 	private boolean drawPath = false, showGrid = false;
 
@@ -73,7 +75,7 @@ public class WorldController extends JPanel implements MouseListener, MouseMotio
 
 		// Draws grid lines
 		if (showGrid) {
-			g.setColor(Color.black);
+			g.setColor(gridColor);
 			for (int ix = 0; ix < world.getWorldGridSize().getWidth(); ++ix) {
 				g.drawLine(ix * cellSize, 0, ix * cellSize, (int) world.getWorldGridSize().getHeight() * cellSize);
 			}
