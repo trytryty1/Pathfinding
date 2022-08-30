@@ -53,6 +53,7 @@ public class WorldController extends JPanel implements MouseListener, MouseMotio
 
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
+	
 	}
 	
 	Color gridColor = new Color(150,150,150);
@@ -165,6 +166,8 @@ public class WorldController extends JPanel implements MouseListener, MouseMotio
 			showGrid = !showGrid;
 		} else if (e.getActionCommand().equals("Allow Diagonal")) {
 			diagonal = !diagonal;
+		} else if (e.getActionCommand().equals("Save State")) {
+			world.saveWorld();
 		}
 	}
 

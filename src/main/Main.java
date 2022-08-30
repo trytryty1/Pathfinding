@@ -25,7 +25,8 @@ public class Main {
 	}
 	
 	Main() {
-		world = new World(60,60,10,10);
+		//world = new World(60,60,10,10);
+		world = World.loadWorld();
 		worldController = new WorldController(world);
 		
 
@@ -50,11 +51,15 @@ public class Main {
 		diagonalOption.addActionListener(worldController);
 		mainMenu.add(diagonalOption);
 		
+		JMenuItem saveOption = new JMenuItem("Save State");
+		saveOption.addActionListener(worldController);
+		mainMenu.add(saveOption);
+		
 		
 		menuBar.add(mainMenu);
 		frame.setJMenuBar(menuBar);
 		
-		frame.setContentPane(worldController);
+		frame.getContentPane().add(worldController);
 		frame.pack();
 	}
 }

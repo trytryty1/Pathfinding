@@ -14,10 +14,16 @@ public class EntityPath {
 	public static final int MOVE_COST = 10;
 	public static final int DIAGONAL_MOVE_COST = 14;
 
-	// TODO: you can totally combine these methods by changing the node list to
-	// allow diagonal
-	// TODO: its slower going to the right idk
-	// TODO: it creates stupid paths sometimes
+	/**
+	 * @param blockedTiles
+	 * @param xBound
+	 * @param yBound
+	 * @param startLoc
+	 * @param endLoc
+	 * @param diagonal
+	 * @return
+	 */
+	
 	public static Point[] calculatePath(boolean[][] blockedTiles, int xBound, int yBound, Point startLoc,
 			Point endLoc, boolean diagonal) {
 		// Make sure the target and starting point are in bounds
@@ -161,9 +167,7 @@ public class EntityPath {
 				int nodeX = nodeXlist[i];
 				int nodeY = nodeYlist[i];
 				if (nodeX > 0 && nodeY > 0 && nodeX < xBound && nodeY < yBound) {
-					// TODO: we might want to recalculate the tested nodes
 					if (!testedNodes[nodeX][nodeY] && !blockedTiles[nodeX][nodeY]) {
-						// Calculate diagonal
 						int newGCost;
 						if(!diagonal) {
 							newGCost = ((i > 3) ? DIAGONAL_MOVE_COST:MOVE_COST) + gCost[test.x][test.y];
@@ -171,8 +175,8 @@ public class EntityPath {
 							newGCost = MOVE_COST + gCost[test.x][test.y];
 						}
 						System.out.println(gCost[test.x][test.y]);
-						int newCost = (int) (distance(nodeX, nodeY, endLoc.x, endLoc.y) * 10) + newGCost;
-						if (!openNodes[nodeX][nodeY] || newCost < cost[nodeX][nodeY]) {
+						if (!openNodes[nodeX][nodeY] || newGCost < cost[nodeX][nodeY]) {
+							int newCost = (int) (distance(nodeX, nodeY, endLoc.x, endLoc.y) * 10) + newGCost;
 							gCost[nodeX][nodeY] = newGCost;
 							cost[nodeX][nodeY] = newCost;
 							parent[nodeX][nodeY] = i;
