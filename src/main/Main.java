@@ -11,12 +11,12 @@ public class Main {
 	World world;
 	WorldController worldController;
 	
-	private static JFrame frame;
+	public static JFrame frame;
 	public static final Dimension JFRAME_DEFAULT_SIZE = new Dimension(500,500);
 	
 	public static void main(String args[]) {
 		frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.setTitle("A* pathfinding");
 		frame.setSize(JFRAME_DEFAULT_SIZE);
 		frame.setVisible(true);
